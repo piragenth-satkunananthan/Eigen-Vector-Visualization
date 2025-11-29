@@ -21,7 +21,7 @@
                </font>
             </Label>
             <Label layoutX="31.0" layoutY="80.0" text="Transformation Matrix" />
-            <Button layoutX="29.0" layoutY="198.0" mnemonicParsing="false" onAction="#CalculateEigen" text="Draw The Eigen Vector" />
+            <Button layoutX="29.0" layoutY="198.0" mnemonicParsing="false" onAction="#manger" text="Draw The Eigen Vector" />
             <Label layoutX="155.0" layoutY="378.0" text="(0,0)" textFill="#01062f">
                <font>
                   <Font name="System Bold" size="12.0" />
