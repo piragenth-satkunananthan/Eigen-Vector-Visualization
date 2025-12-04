@@ -4,7 +4,7 @@ import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
-import javafx.scene.Cursor;
+
 import javafx.scene.Group;
 
 import javafx.scene.control.Button;
