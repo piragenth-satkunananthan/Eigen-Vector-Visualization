@@ -36,8 +36,19 @@ public class HelloController {
     private TextField v2;
 
     @FXML
-    private Button Draw_button;
+    private Label EigenVector_print_1;
 
+    @FXML
+    private Label EigenVector_print_2;
+
+    @FXML
+    private Label Eigen_Value_1;
+
+    @FXML
+    private Label Eigen_Value_2;
+
+    @FXML
+    private Label Eigen_value_num;
 
 //    public static double scalar = 10;
 //    Vector EigenVector1;
@@ -246,6 +257,7 @@ public class HelloController {
         Platform.runLater(() -> {
 
             gridSystem = new GridSystem(pane.getHeight(), pane.getWidth(), unitSize);
+
             pane.getChildren().add(gridSystem);
 
             //to hide grid lines that are out of the pane
@@ -281,18 +293,49 @@ public class HelloController {
                 new KeyFrame(Duration.seconds(2.0), new KeyValue(progress, 1, Interpolator.EASE_BOTH))
         );
 
-
+        if (gridSystem != null) {
+            gridSystem.ClearEigenVector();
+        }
         EigenCalc eigenCalc = new EigenCalc(ma, mb, mc, md);
         double[] eigenValues = eigenCalc.EigenValue();
         if (eigenValues.length == 0) {
             System.out.println("This matrix have no real eigen solutions");
+            Eigen_value_num.setText("No Real Eigen Solutions");
+            Eigen_Value_1.setText("");
+            EigenVector_print_1.setText("");
+            Eigen_Value_2.setText("");
+            EigenVector_print_2.setText("");
+
         } else if (eigenValues.length == 1) {
             System.out.println("one EigenValue");
+            Eigen_value_num.setText("One Eigen Value");
             double[] EigenVector1 = eigenCalc.EigenVector(eigenValues[0]);
+            Eigen_Value_1.setText(String.valueOf(eigenValues[0]));
+            String Eigen_Vector_print_output = String.format("[%.4f, %.4f]",EigenVector1[0],EigenVector1[1]);
+            EigenVector_print_1.setText(Eigen_Vector_print_output);
+            System.out.println("Eigen Value: "+ eigenValues[0]+"    EigenVector1: "+ EigenVector1[0]+"   "+EigenVector1[1]);
+            gridSystem.EigenVectorDraw(EigenVector1);
+
         } else {
             System.out.println("Two EigenValue");
+            Eigen_value_num.setText("Two Eigen Values");
             double[] EigenVector1 = eigenCalc.EigenVector(eigenValues[0]);
+            System.out.println("Eigen Value: "+ eigenValues[0]+"   EigenVector1: "+ EigenVector1[0]+"   "+EigenVector1[1]);
+            Eigen_Value_1.setText(String.valueOf(eigenValues[0]));
+//            String Eigen_Vector_print_output = "["+String.valueOf(EigenVector1[0]) + ","+ String.valueOf(EigenVector1[1])+"]";
+            String Eigen_Vector_print_output = String.format("[%.4f, %.4f]",EigenVector1[0],EigenVector1[1]);
+
+            EigenVector_print_1.setText(Eigen_Vector_print_output);
+
+            gridSystem.EigenVectorDraw(EigenVector1);
+
             double[] EigenVector2 = eigenCalc.EigenVector(eigenValues[1]);
+            System.out.println("Eigen Value: "+ eigenValues[1]+"    EigenVector2: "+ EigenVector2[0]+"  "+EigenVector2[1]);
+            Eigen_Value_2.setText(String.valueOf(eigenValues[1]));
+//            String Eigen_Vector_print_output1 = "["+String.valueOf(EigenVector2[0]) + ","+ String.valueOf(EigenVector2[1])+"]";
+            String Eigen_Vector_print_output1 = String.format("[%.4f, %.4f]",EigenVector2[0],EigenVector2[1]);
+            EigenVector_print_2.setText(Eigen_Vector_print_output1);
+            gridSystem.EigenVectorDraw(EigenVector2);
 
         }
 

@@ -25,7 +25,7 @@ public class GridSystem extends Group {
 
     List<GridLines> VerticalLines = new ArrayList<>();
     List<GridLines> HorizontalLines = new ArrayList<>();
-
+    List<GridLines> EigenVectorLines = new ArrayList<>();
     public GridSystem(double paneHeight, double paneWidth, int unitSize) {
         this.CpaneHeight = paneHeight / 2;
         this.CpaneWidth = paneWidth / 2;
@@ -34,13 +34,41 @@ public class GridSystem extends Group {
 
         updateGridMatrix(0);
     }
-    public double getCpaneHeight(){
+
+    //This is for drawing eigenVector
+    public void EigenVectorDraw(double[] EigenVector){
+        double x1 = EigenVector[0];
+        double x2 = EigenVector[1];
+        int length = (int) (getCpaneWidth()) / unitSize;
+//        int length =1000;
+        GridLines line = new GridLines(-x1 * length,-x2 * length,x1 * length,x2 * length);
+        EigenVectorLines.add(line);
+
+        line.line.setStroke(Color.YELLOW);
+        line.line.setStrokeWidth(2);
+//        line.line.getStrokeDashArray().addAll(15d, 15d);
+        this.getChildren().add(line.line);
+        TransformGrid(1, 0, 0, 1, line);
+//        TransformGrid(this.a,this.b,this.c,this.d,line);
+    }
+
+    public void ClearEigenVector(){
+        for (GridLines gl : EigenVectorLines) {
+            this.getChildren().remove(gl.line);
+        }
+
+        EigenVectorLines.clear();
+    }
+
+    public double getCpaneHeight() {
         return CpaneHeight;
     }
-    public double getCpaneWidth(){
+
+    public double getCpaneWidth() {
         return CpaneWidth;
     }
-    void Caller(double a, double b, double c, double d,Timeline timeline) {
+
+    void Caller(double a, double b, double c, double d, Timeline timeline) {
         this.a = a;
         this.b = b;
         this.c = c;
@@ -101,6 +129,11 @@ public class GridSystem extends Group {
         }
         for (GridLines gl : HorizontalLines) {
             TransformGrid(Ca, Cb, Cc, Cd, gl);
+        }
+
+        for(GridLines gl : EigenVectorLines){
+            TransformGrid(Ca, Cb, Cc, Cd, gl);
+
         }
 
 
