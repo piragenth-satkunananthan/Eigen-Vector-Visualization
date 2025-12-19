@@ -301,10 +301,10 @@ public class HelloController {
         if (eigenValues.length == 0) {
             System.out.println("This matrix have no real eigen solutions");
             Eigen_value_num.setText("No Real Eigen Solutions");
-            Eigen_Value_1.setText("");
-            EigenVector_print_1.setText("");
-            Eigen_Value_2.setText("");
-            EigenVector_print_2.setText("");
+            Eigen_Value_1.setText("--");
+            EigenVector_print_1.setText("--");
+            Eigen_Value_2.setText("--");
+            EigenVector_print_2.setText("--");
 
         } else if (eigenValues.length == 1) {
             System.out.println("one EigenValue");
@@ -313,6 +313,8 @@ public class HelloController {
             Eigen_Value_1.setText(String.valueOf(eigenValues[0]));
             String Eigen_Vector_print_output = String.format("[%.4f, %.4f]",EigenVector1[0],EigenVector1[1]);
             EigenVector_print_1.setText(Eigen_Vector_print_output);
+            Eigen_Value_2.setText("--");
+            EigenVector_print_2.setText("--");
             System.out.println("Eigen Value: "+ eigenValues[0]+"    EigenVector1: "+ EigenVector1[0]+"   "+EigenVector1[1]);
             gridSystem.EigenVectorDraw(EigenVector1);
 

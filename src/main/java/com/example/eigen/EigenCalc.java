@@ -52,14 +52,12 @@ public class EigenCalc {
             x1 = - (this.d - lambda);
             x2 = this.c;
 
-            // If THAT is also zero, it's the Identity matrix (or similar),
-            // so any vector works. We just return a standard [1, 0].
+
             if (Math.abs(x1) < 0.0001 && Math.abs(x2) < 0.0001) {
                 return new double[]{1, 0};
             }
         }
 
-        // Normalizing (Optional, makes the vector length 1, easier to see)
         double magnitude = Math.sqrt(x1*x1 + x2*x2);
         if (magnitude != 0) {
             x1 /= magnitude;
