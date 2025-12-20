@@ -110,8 +110,8 @@ public class GridSystem extends Group {
             gl.line.setStrokeWidth(2);
         } else {
             // Regular Grid Line (Faint Cyan-Grey)
-            gl.line.setStroke(Color.DARKGRAY);
-            gl.line.setStrokeWidth(1);
+            gl.line.setStroke(Color.BLACK);
+            gl.line.setStrokeWidth(0.7);
         }
     }
 
