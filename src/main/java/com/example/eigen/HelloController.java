@@ -285,7 +285,7 @@ public class HelloController {
         double mc = Double.parseDouble(c.getText());
         double md = Double.parseDouble(d.getText());
 
-        //testing
+        //for testing
 //        ma=1;mb=2;mc=3;md=4;
         progress.set(0);
         Timeline timeline = new Timeline(
@@ -311,36 +311,35 @@ public class HelloController {
             Eigen_value_num.setText("One Eigen Value");
             double[] EigenVector1 = eigenCalc.EigenVector(eigenValues[0]);
             Eigen_Value_1.setText(String.valueOf(eigenValues[0]));
-            String Eigen_Vector_print_output = String.format("[%.4f, %.4f]",EigenVector1[0],EigenVector1[1]);
+            String Eigen_Vector_print_output = String.format("[%.4f, %.4f]", EigenVector1[0], EigenVector1[1]);
             EigenVector_print_1.setText(Eigen_Vector_print_output);
             Eigen_Value_2.setText("--");
             EigenVector_print_2.setText("--");
-            System.out.println("Eigen Value: "+ eigenValues[0]+"    EigenVector1: "+ EigenVector1[0]+"   "+EigenVector1[1]);
+            System.out.println("Eigen Value: " + eigenValues[0] + "    EigenVector1: " + EigenVector1[0] + "   " + EigenVector1[1]);
             gridSystem.EigenVectorDraw(EigenVector1);
 
         } else {
             System.out.println("Two EigenValue");
             Eigen_value_num.setText("Two Eigen Values");
             double[] EigenVector1 = eigenCalc.EigenVector(eigenValues[0]);
-            System.out.println("Eigen Value: "+ eigenValues[0]+"   EigenVector1: "+ EigenVector1[0]+"   "+EigenVector1[1]);
+            System.out.println("Eigen Value: " + eigenValues[0] + "   EigenVector1: " + EigenVector1[0] + "   " + EigenVector1[1]);
             Eigen_Value_1.setText(String.valueOf(eigenValues[0]));
 //            String Eigen_Vector_print_output = "["+String.valueOf(EigenVector1[0]) + ","+ String.valueOf(EigenVector1[1])+"]";
-            String Eigen_Vector_print_output = String.format("[%.4f, %.4f]",EigenVector1[0],EigenVector1[1]);
+            String Eigen_Vector_print_output = String.format("[%.4f, %.4f]", EigenVector1[0], EigenVector1[1]);
 
             EigenVector_print_1.setText(Eigen_Vector_print_output);
 
             gridSystem.EigenVectorDraw(EigenVector1);
 
             double[] EigenVector2 = eigenCalc.EigenVector(eigenValues[1]);
-            System.out.println("Eigen Value: "+ eigenValues[1]+"    EigenVector2: "+ EigenVector2[0]+"  "+EigenVector2[1]);
+            System.out.println("Eigen Value: " + eigenValues[1] + "    EigenVector2: " + EigenVector2[0] + "  " + EigenVector2[1]);
             Eigen_Value_2.setText(String.valueOf(eigenValues[1]));
 //            String Eigen_Vector_print_output1 = "["+String.valueOf(EigenVector2[0]) + ","+ String.valueOf(EigenVector2[1])+"]";
-            String Eigen_Vector_print_output1 = String.format("[%.4f, %.4f]",EigenVector2[0],EigenVector2[1]);
+            String Eigen_Vector_print_output1 = String.format("[%.4f, %.4f]", EigenVector2[0], EigenVector2[1]);
             EigenVector_print_2.setText(Eigen_Vector_print_output1);
             gridSystem.EigenVectorDraw(EigenVector2);
 
         }
-
 
 
         if (!(v1.getText().isEmpty() || v2.getText().isEmpty())) {

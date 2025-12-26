@@ -47,6 +47,7 @@ public class EigenCalc {
 //        } else {
 //            x1 = (-this.b * x2) / (this.a - lambda);
 //        }
+        System.out.println(x1 +" " +x2);
 
         if (Math.abs(x1) < 0.0001 && Math.abs(x2) < 0.0001) {
             x1 = - (this.d - lambda);

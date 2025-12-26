@@ -26,6 +26,7 @@ public class GridSystem extends Group {
     List<GridLines> VerticalLines = new ArrayList<>();
     List<GridLines> HorizontalLines = new ArrayList<>();
     List<GridLines> EigenVectorLines = new ArrayList<>();
+
     public GridSystem(double paneHeight, double paneWidth, int unitSize) {
         this.CpaneHeight = paneHeight / 2;
         this.CpaneWidth = paneWidth / 2;
@@ -36,12 +37,12 @@ public class GridSystem extends Group {
     }
 
     //This is for drawing eigenVector
-    public void EigenVectorDraw(double[] EigenVector){
+    public void EigenVectorDraw(double[] EigenVector) {
         double x1 = EigenVector[0];
         double x2 = EigenVector[1];
         int length = (int) (getCpaneWidth()) / unitSize;
 //        int length =1000;
-        GridLines line = new GridLines(-x1 * length,-x2 * length,x1 * length,x2 * length);
+        GridLines line = new GridLines(-x1 * length, -x2 * length, x1 * length, x2 * length);
         EigenVectorLines.add(line);
 
         line.line.setStroke(Color.YELLOW);
@@ -52,7 +53,7 @@ public class GridSystem extends Group {
 //        TransformGrid(this.a,this.b,this.c,this.d,line);
     }
 
-    public void ClearEigenVector(){
+    public void ClearEigenVector() {
         for (GridLines gl : EigenVectorLines) {
             this.getChildren().remove(gl.line);
         }
@@ -131,7 +132,7 @@ public class GridSystem extends Group {
             TransformGrid(Ca, Cb, Cc, Cd, gl);
         }
 
-        for(GridLines gl : EigenVectorLines){
+        for (GridLines gl : EigenVectorLines) {
             TransformGrid(Ca, Cb, Cc, Cd, gl);
 
         }
