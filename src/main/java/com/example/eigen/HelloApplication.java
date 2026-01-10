@@ -11,7 +11,7 @@ import java.util.Objects;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo.png")));
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo.svg")));
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Eigen Vector Visualizer");
